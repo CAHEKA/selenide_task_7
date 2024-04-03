@@ -26,8 +26,8 @@ public class ContextMenu {
 
     @Step("Expected text: {expectedText}")
     public void checkContextMenuContainsText(String expectedText) {
-        String alertText = switchTo().alert().getText();
-        Assertions.assertEquals(expectedText, alertText,
+        String actualText = switchTo().alert().getText();
+        Assertions.assertEquals(expectedText, actualText,
                 "Error: The text of the JS Alert does not match the expected text: " + expectedText);
         Selenide.closeWebDriver();
     }

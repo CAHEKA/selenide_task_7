@@ -47,25 +47,25 @@ public class DragAndDrop {
         return -1;
     }
 
-    @Step("Drag аnd drop: {from} to {to}")
-    public void dragAndDrop(String from ,String to) {
-        Integer firstFrom = getIndexFromName(from);
-        Integer firstTo = getIndexFromName(to);
+    @Step("Drag аnd drop: {a} to {b}")
+    public void dragAndDrop(String a ,String b) {
+        Integer firstA = getIndexFromName(a);
+        Integer firstB = getIndexFromName(b);
 
         actions()
-                .moveToElement(getElementFromName(from))
+                .moveToElement(getElementFromName(a))
                 .clickAndHold()
-                .moveByOffset((getPointFromName(to).x - getPointFromName(from).x) + 2, 
-                        (getPointFromName(to).y - getPointFromName(from).y) + 2)
+                .moveByOffset((getPointFromName(b).x - getPointFromName(a).x) + 2, 
+                        (getPointFromName(b).y - getPointFromName(a).y) + 2)
                 .release()
                 .perform();
 
-        Integer lastFrom = getIndexFromName(from);
-        Integer lastTo = getIndexFromName(to);
+        Integer lastA = getIndexFromName(a);
+        Integer lastB = getIndexFromName(b);
 
-        Assertions.assertEquals(firstFrom, lastTo,
-                "Error: The element '" + from + "' is not in the place of the element '" + to);
-        Assertions.assertEquals(firstTo, lastFrom, 
-                "Error: The element '" + to + "' is not in the place of the element '" + from);
+        Assertions.assertEquals(lastB, firstA, 
+                "Error: The element '" + a + "' is not in the place of the element '" + b);
+        Assertions.assertEquals(lastA, firstB, 
+                "Error: The element '" + b + "' is not in the place of the element '" + a);
     }
 }

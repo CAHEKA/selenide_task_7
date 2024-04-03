@@ -13,7 +13,7 @@ import static com.codeborne.selenide.Selenide.*;
 public class InfiniteScroll {
 
     private final ElementsCollection elements = $$x("//div[@class='jscroll-added']");
-    
+
     public InfiniteScroll() {
         Selenide.open("https://the-internet.herokuapp.com/infinite_scroll");
         elements.first().should(visible, Duration.ofSeconds(30));
@@ -29,7 +29,7 @@ public class InfiniteScroll {
                     return this;
             }
             if (firstState == elements.size())
-                Assertions.fail("Error: Element not found");
+                Assertions.fail("Error: Text <" + text + "> not found");
         }
     }
 
